@@ -29,15 +29,19 @@ class MyApp extends StatelessWidget {
                     subtitle: "Il y'a 2h",
                     stories: [
                       Scaffold(
-                        body: Container(
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(
-                                "https://wallpaperaccess.com/full/16568.png",
+                        body: Stack(
+                          children: [
+                            Container(
+                              height: MediaQuery.of(context).size.height,
+                              width: MediaQuery.of(context).size.width,
+                              decoration: const BoxDecoration(),
+                              child: const Image(
+                                image: NetworkImage(
+                                  "https://wallpaperaccess.com/full/16568.png",
+                                ),
                               ),
                             ),
-                          ),
+                          ],
                         ),
                       ),
                       Scaffold(

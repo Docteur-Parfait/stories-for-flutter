@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:stories_for_flutter/stories_for_flutter.dart';
 
@@ -246,70 +245,70 @@ class FullPageViewState extends State<FullPageView> {
                   : const Center(),
               const SizedBox(height: 5),
               // Story name
-              Row(
-                children: [
-                  (showThumbnailOnFullPage == null || showThumbnailOnFullPage!)
-                      ? Container(
-                          width: fullpageThumbnailSize ?? 62,
-                          height: fullpageThumbnailSize ?? 62,
-                          padding: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(100),
-                            child: CachedNetworkImage(
-                              fit: BoxFit.fill,
-                              imageUrl: storiesMapList![getStoryIndex(
-                                      listLengths as List<int>, selectedIndex!)]
-                                  .fullPageThumbnail,
-                              errorWidget: (context, url, error) => Container(
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ),
-                        )
-                      : const Center(),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Text(
-                          showStoryNameOnFullPage
-                              ? storiesMapList![getStoryIndex(
-                                      listLengths as List<int>, selectedIndex!)]
-                                  .name
-                              : "",
-                          style: widget.fullPagetitleStyle ??
-                              const TextStyle(
-                                color: Colors.white,
-                                shadows: [
-                                  Shadow(blurRadius: 10, color: Colors.black)
-                                ],
-                                fontSize: 13,
-                              ),
-                        ),
-                        Text(
-                          showStoryNameOnFullPage
-                              ? storiesMapList![getStoryIndex(
-                                      listLengths as List<int>, selectedIndex!)]
-                                  .subtitle
-                              : "",
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                            shadows: [
-                              Shadow(blurRadius: 10, color: Colors.black)
-                            ],
-                            fontSize: 13,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  if (widget.action != null) widget.action!,
-                ],
-              ),
+              // Row(
+              //   children: [
+              //     (showThumbnailOnFullPage == null || showThumbnailOnFullPage!)
+              //         ? Container(
+              //             width: fullpageThumbnailSize ?? 62,
+              //             height: fullpageThumbnailSize ?? 62,
+              //             padding: const EdgeInsets.all(8),
+              //             decoration: BoxDecoration(
+              //               borderRadius: BorderRadius.circular(100),
+              //             ),
+              //             child: ClipRRect(
+              //               borderRadius: BorderRadius.circular(100),
+              //               child: CachedNetworkImage(
+              //                 fit: BoxFit.fill,
+              //                 imageUrl: storiesMapList![getStoryIndex(
+              //                         listLengths as List<int>, selectedIndex!)]
+              //                     .fullPageThumbnail,
+              //                 errorWidget: (context, url, error) => Container(
+              //                   color: Colors.grey,
+              //                 ),
+              //               ),
+              //             ),
+              //           )
+              //         : const Center(),
+              //     Expanded(
+              //       child: Column(
+              //         crossAxisAlignment: CrossAxisAlignment.stretch,
+              //         children: [
+              //           Text(
+              //             showStoryNameOnFullPage
+              //                 ? storiesMapList![getStoryIndex(
+              //                         listLengths as List<int>, selectedIndex!)]
+              //                     .name
+              //                 : "",
+              //             style: widget.fullPagetitleStyle ??
+              //                 const TextStyle(
+              //                   color: Colors.white,
+              //                   shadows: [
+              //                     Shadow(blurRadius: 10, color: Colors.black)
+              //                   ],
+              //                   fontSize: 13,
+              //                 ),
+              //           ),
+              //           Text(
+              //             showStoryNameOnFullPage
+              //                 ? storiesMapList![getStoryIndex(
+              //                         listLengths as List<int>, selectedIndex!)]
+              //                     .subtitle
+              //                 : "",
+              //             style: const TextStyle(
+              //               color: Colors.white,
+              //               fontWeight: FontWeight.w600,
+              //               shadows: [
+              //                 Shadow(blurRadius: 10, color: Colors.black)
+              //               ],
+              //               fontSize: 13,
+              //             ),
+              //           ),
+              //         ],
+              //       ),
+              //     ),
+              //     if (widget.action != null) widget.action!,
+              //   ],
+              // ),
             ],
           ),
         ],
