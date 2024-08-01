@@ -139,11 +139,15 @@ class StoryItem {
   /// List of pages to display as stories under this story
   List<Scaffold> stories;
 
+  /// Action
+  Widget? action;
+
   /// Add a story
   StoryItem(
       {required this.name,
       required this.thumbnail,
       required this.fullPageThumbnail,
       required this.subtitle,
-      required this.stories});
+      required this.stories,
+      this.action});
 }

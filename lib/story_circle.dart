@@ -52,9 +52,6 @@ class StoryCircle extends StatelessWidget {
   /// Story full page thumbnail
   final Widget? fullPageThumbnail;
 
-  /// Story DateTime posted
-  final DateTime? storyDateTime;
-
   const StoryCircle({
     Key? key,
     this.story,
@@ -78,7 +75,6 @@ class StoryCircle extends StatelessWidget {
     this.autoPlayDuration,
     this.showStoryName = true,
     this.fullPageThumbnail,
-    this.storyDateTime,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -135,8 +131,9 @@ class StoryCircle extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(100),
                     child: CachedNetworkImage(
-                      width: fullpageThumbnailSize ?? 25,
-                      height: fullpageThumbnailSize ?? 25,
+                      fit: BoxFit.fill,
+                      width: fullpageThumbnailSize ?? 62,
+                      height: fullpageThumbnailSize ?? 62,
                       imageUrl: story![selectedIndex!].thumbnail,
                       errorWidget: (context, url, error) => Container(
                         color: Colors.white,

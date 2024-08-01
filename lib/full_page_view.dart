@@ -43,6 +43,9 @@ class FullPageView extends StatefulWidget {
   /// Story DateTime posted
   final String? subtitle;
 
+  /// Story DateTime posted
+  final Widget? action;
+
   const FullPageView({
     Key? key,
     required this.storiesMapList,
@@ -59,6 +62,7 @@ class FullPageView extends StatefulWidget {
     this.autoPlayDuration,
     this.fullPageThumbnail,
     this.subtitle,
+    this.action,
   }) : super(key: key);
   @override
   FullPageViewState createState() => FullPageViewState();
@@ -244,22 +248,28 @@ class FullPageViewState extends State<FullPageView> {
               // Story name
               Row(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: (showThumbnailOnFullPage == null ||
-                            showThumbnailOnFullPage!)
-                        ? CachedNetworkImage(
-                            width: fullpageThumbnailSize ?? 25,
-                            height: fullpageThumbnailSize ?? 25,
-                            imageUrl: storiesMapList![getStoryIndex(
-                                    listLengths as List<int>, selectedIndex!)]
-                                .fullPageThumbnail,
-                            errorWidget: (context, url, error) => Container(
-                              color: Colors.grey,
+                  (showThumbnailOnFullPage == null || showThumbnailOnFullPage!)
+                      ? Container(
+                          width: fullpageThumbnailSize ?? 62,
+                          height: fullpageThumbnailSize ?? 62,
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(100),
+                            child: CachedNetworkImage(
+                              fit: BoxFit.fill,
+                              imageUrl: storiesMapList![getStoryIndex(
+                                      listLengths as List<int>, selectedIndex!)]
+                                  .fullPageThumbnail,
+                              errorWidget: (context, url, error) => Container(
+                                color: Colors.grey,
+                              ),
                             ),
-                          )
-                        : const Center(),
-                  ),
+                          ),
+                        )
+                      : const Center(),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -297,6 +307,7 @@ class FullPageViewState extends State<FullPageView> {
                       ],
                     ),
                   ),
+                  if (widget.action != null) widget.action!,
                 ],
               ),
             ],
