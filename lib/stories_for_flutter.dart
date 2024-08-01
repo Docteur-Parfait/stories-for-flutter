@@ -1,5 +1,5 @@
-import 'package:stories_for_flutter/story_circle.dart';
 import 'package:flutter/material.dart';
+import 'package:stories_for_flutter/story_circle.dart';
 
 class Stories extends StatelessWidget {
   /// Recieves the list of stories to display
@@ -128,12 +128,22 @@ class StoryItem {
   String name;
 
   /// Image to display on the circle of the image
-  ImageProvider thumbnail;
+  String thumbnail;
+
+  /// Image to display on the circle of the image
+  String fullPageThumbnail;
+
+  /// Image to display on the circle of the image
+  String subtitle;
 
   /// List of pages to display as stories under this story
   List<Scaffold> stories;
 
   /// Add a story
   StoryItem(
-      {required this.name, required this.thumbnail, required this.stories});
+      {required this.name,
+      required this.thumbnail,
+      required this.fullPageThumbnail,
+      required this.subtitle,
+      required this.stories});
 }

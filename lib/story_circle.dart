@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:stories_for_flutter/full_page_view.dart';
 import 'package:stories_for_flutter/stories_for_flutter.dart';
 
@@ -48,6 +49,12 @@ class StoryCircle extends StatelessWidget {
   /// Show story name on main page
   final bool showStoryName;
 
+  /// Story full page thumbnail
+  final Widget? fullPageThumbnail;
+
+  /// Story DateTime posted
+  final DateTime? storyDateTime;
+
   const StoryCircle({
     Key? key,
     this.story,
@@ -70,6 +77,8 @@ class StoryCircle extends StatelessWidget {
     this.onPageChanged,
     this.autoPlayDuration,
     this.showStoryName = true,
+    this.fullPageThumbnail,
+    this.storyDateTime,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -121,13 +130,19 @@ class StoryCircle extends StatelessWidget {
                   : altPadding + 1.5,
               backgroundColor: highLightColor ?? const Color(0xffcc306C),
               child: CircleAvatar(
-                backgroundColor: paddingColor ?? Colors.white,
-                radius: altPadding,
-                child: CircleAvatar(
-                    radius: altRadius,
-                    backgroundColor: Colors.white,
-                    backgroundImage: story![selectedIndex!].thumbnail),
-              ),
+                  backgroundColor: paddingColor ?? Colors.white,
+                  radius: altPadding,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(100),
+                    child: CachedNetworkImage(
+                      width: fullpageThumbnailSize ?? 25,
+                      height: fullpageThumbnailSize ?? 25,
+                      imageUrl: story![selectedIndex!].thumbnail,
+                      errorWidget: (context, url, error) => Container(
+                        color: Colors.white,
+                      ),
+                    ),
+                  )),
             ),
           ),
           const SizedBox(height: 5),

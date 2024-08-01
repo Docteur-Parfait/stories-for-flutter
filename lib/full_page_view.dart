@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:stories_for_flutter/stories_for_flutter.dart';
 
@@ -36,6 +37,12 @@ class FullPageView extends StatefulWidget {
   /// Default value is infinite.
   final Duration? autoPlayDuration;
 
+  /// Story full page thumbnail
+  final Widget? fullPageThumbnail;
+
+  /// Story DateTime posted
+  final String? subtitle;
+
   const FullPageView({
     Key? key,
     required this.storiesMapList,
@@ -50,6 +57,8 @@ class FullPageView extends StatefulWidget {
     this.storyStatusBarColor,
     this.onPageChanged,
     this.autoPlayDuration,
+    this.fullPageThumbnail,
+    this.subtitle,
   }) : super(key: key);
   @override
   FullPageViewState createState() => FullPageViewState();
@@ -239,12 +248,15 @@ class FullPageViewState extends State<FullPageView> {
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: (showThumbnailOnFullPage == null ||
                             showThumbnailOnFullPage!)
-                        ? Image(
+                        ? CachedNetworkImage(
                             width: fullpageThumbnailSize ?? 25,
                             height: fullpageThumbnailSize ?? 25,
-                            image: storiesMapList![getStoryIndex(
+                            imageUrl: storiesMapList![getStoryIndex(
                                     listLengths as List<int>, selectedIndex!)]
-                                .thumbnail,
+                                .fullPageThumbnail,
+                            errorWidget: (context, url, error) => Container(
+                              color: Colors.grey,
+                            ),
                           )
                         : const Center(),
                   ),
@@ -266,6 +278,21 @@ class FullPageViewState extends State<FullPageView> {
                                 ],
                                 fontSize: 13,
                               ),
+                        ),
+                        Text(
+                          showStoryNameOnFullPage
+                              ? storiesMapList![getStoryIndex(
+                                      listLengths as List<int>, selectedIndex!)]
+                                  .subtitle
+                              : "",
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            shadows: [
+                              Shadow(blurRadius: 10, color: Colors.black)
+                            ],
+                            fontSize: 13,
+                          ),
                         ),
                       ],
                     ),

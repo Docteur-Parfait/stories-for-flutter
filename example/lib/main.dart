@@ -22,9 +22,11 @@ class MyApp extends StatelessWidget {
               storyItemList: [
                 StoryItem(
                     name: "First Story",
-                    thumbnail: const NetworkImage(
-                      "https://assets.materialup.com/uploads/82eae29e-33b7-4ff7-be10-df432402b2b6/preview",
-                    ),
+                    fullPageThumbnail:
+                        "https://img.freepik.com/free-photo/joy-positiveness-body-language-beautiful-happy-young-mulatto-girl-with-curly-black-hair-posing-isolated-dressed-silk-pajamas-making-thumbs-up-gesture-showing-ok-sign-smiling_343059-2617.jpg?t=st=1721941604~exp=1721945204~hmac=7bce51e11b1ba00c6b3e7f58415a4208123297c57f5d4805aebad7e46db38d65&w=996",
+                    thumbnail:
+                        "https://img.freepik.com/free-photo/joy-positiveness-body-language-beautiful-happy-young-mulatto-girl-with-curly-black-hair-posing-isolated-dressed-silk-pajamas-making-thumbs-up-gesture-showing-ok-sign-smiling_343059-2617.jpg?t=st=1721941604~exp=1721945204~hmac=7bce51e11b1ba00c6b3e7f58415a4208123297c57f5d4805aebad7e46db38d65&w=996",
+                    subtitle: "Il y'a 2h",
                     stories: [
                       Scaffold(
                         body: Container(
@@ -51,38 +53,6 @@ class MyApp extends StatelessWidget {
                         ),
                       ),
                     ]),
-                StoryItem(
-                  name: "2nd",
-                  thumbnail: const NetworkImage(
-                    "https://www.shareicon.net/data/512x512/2017/03/29/881758_cup_512x512.png",
-                  ),
-                  stories: [
-                    Scaffold(
-                      body: Container(
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(
-                              "https://i.pinimg.com/originals/31/bc/a9/31bca95ba39157a6cbf53cdf09dda672.png",
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const Scaffold(
-                      backgroundColor: Colors.black,
-                      body: Center(
-                        child: Text(
-                          "That's it, Folks !",
-                          style: TextStyle(
-                            color: Color(0xffffffff),
-                            fontSize: 25,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
               ],
             ),
           ],
