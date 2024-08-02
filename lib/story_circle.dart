@@ -128,15 +128,18 @@ class StoryCircle extends StatelessWidget {
               child: CircleAvatar(
                   backgroundColor: paddingColor ?? Colors.white,
                   radius: altPadding,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(100),
-                    child: CachedNetworkImage(
-                      fit: BoxFit.fill,
-                      width: fullpageThumbnailSize ?? 62,
-                      height: fullpageThumbnailSize ?? 62,
-                      imageUrl: story![selectedIndex!].thumbnail,
-                      errorWidget: (context, url, error) => Container(
-                        color: Colors.white,
+                  child: Container(
+                    padding: const EdgeInsets.all(3.3),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(100),
+                      child: CachedNetworkImage(
+                        fit: BoxFit.fill,
+                        width: fullpageThumbnailSize ?? 62,
+                        height: fullpageThumbnailSize ?? 62,
+                        imageUrl: story![selectedIndex!].thumbnail,
+                        errorWidget: (context, url, error) => Container(
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   )),
