@@ -51,7 +51,7 @@ class Stories extends StatelessWidget {
   final Color? storyStatusBarColor;
 
   /// Function to run when a page is changed
-  final Function? onPageChanged;
+  final Function(int)? onPageChanged;
 
   /// Duration after which next story is displayed
   /// Default value is infinite.

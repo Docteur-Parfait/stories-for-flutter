@@ -30,7 +30,7 @@ class FullPageView extends StatefulWidget {
   final Color? storyStatusBarColor;
 
   /// Function to run when page changes
-  final Function? onPageChanged;
+  final Function(int)? onPageChanged;
 
   /// Duration after which next story is displayed
   /// Default value is infinite.
@@ -153,7 +153,7 @@ class FullPageViewState extends State<FullPageView> {
                 selectedIndex = page;
               });
               // Running on pageChanged
-              if (widget.onPageChanged != null) widget.onPageChanged!();
+              if (widget.onPageChanged != null) widget.onPageChanged!(page);
             },
             controller: _pageController,
             scrollDirection: Axis.horizontal,

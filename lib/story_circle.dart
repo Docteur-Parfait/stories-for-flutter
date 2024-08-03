@@ -40,7 +40,7 @@ class StoryCircle extends StatelessWidget {
   final Color? storyStatusBarColor;
 
   /// Function to run when page changes
-  final Function? onPageChanged;
+  final Function(int)? onPageChanged;
 
   /// Duration after which next story is displayed
   /// Default value is infinite.
